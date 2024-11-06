@@ -1,15 +1,54 @@
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "Clarify"
-version = "0.5.0.dev0"
+dynamic = ["version"]
+description = "A library for scraping and parsing election results from jurisdictions using Clarity elections systems."
+readme = "README.md"
+license = ""
+authors = [
+    { name = "OpenElections", email = "openelections@gmail.com" },
+]
+keywords = [
+    "Clarity",
+    "elections",
+    "parser",
+    "results",
+    "scraper",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 2",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.4",
+    "Topic :: Internet",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Text Processing",
+    "Topic :: Text Processing :: Markup :: XML",
+]
 dependencies = [
-    "requests",
     "cssselect",
-    "futures",
+    "lxml",
+    "python-dateutil",
+    "requests",
     "requests-futures",
     "six",
-    "wheel"
 ]
+
+[project.urls]
+Homepage = "http://openelections.net"
+
+[tool.hatch.version]
+path = "clarify/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/clarify",
+]
+
